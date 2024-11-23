@@ -1,0 +1,7 @@
+users:
+  demo1:
+    name: demo1 user
+    email: demo1@example.com
+  demo2:
+    name: demo2 user
+    email: demo2@example.com

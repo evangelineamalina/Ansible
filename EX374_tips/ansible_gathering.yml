@@ -1,0 +1,11 @@
+---
+- name: gather test
+  hosts:
+  gather_facts: false
+  tasks:
+  - name: setup gather
+    setup:
+      gather_subset:
+         - '!all'
+         - '!min'
+         - network

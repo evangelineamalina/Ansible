@@ -1,0 +1,9 @@
+---
+- name: playbook to Pause the execution 
+  hosts: localhost
+  vars:
+    sleep_time: 15
+  tasks:
+    - name: "Wait for defined time {{ sleep_time }}"
+      pause:
+        minutes: "{{ sleep_time }}"

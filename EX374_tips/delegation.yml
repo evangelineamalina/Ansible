@@ -1,0 +1,21 @@
+---
+- name: update time in workstation
+  hosts:
+  gather_facts: false
+  max_fail_percentage: 30%
+  serial:
+    - 1
+    - 10%
+    - 100%
+  tasks:
+  - name: update times in fil
+    lineinfile:
+      path : /tmp/times.txt
+      state: present
+      mode: 0644
+      create: true
+      insertafter: EOF
+      line: |
+       {{ ansible_facts['fqdn'] }}
+       {{ %c | strftime(ansible_facts['date_time']['epoch'])}}
+    delegate_to: workstation

@@ -1,0 +1,17 @@
+---
+- name: general tasks to know for 374
+  hosts:
+  gather_facts: true
+  tasks:
+  - name: haproxy management
+    haproxy:
+      state: enabled
+      backend: app
+      host: "{{ inevntory_hostname }}"
+    delegate_to: "{{ item }}"
+    with_items: "{{ groups['lb_servers']}}"
+
+  - name: uri url
+    uri:
+      url: "https://{{ ansible_facts['fqdn']}}:{{ port}}"
+      status_code: 200

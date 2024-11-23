@@ -1,0 +1,15 @@
+---
+- name: test service & yum
+  hosts:
+  gather_facts: false
+  tasks:
+  - name: install service
+    yum:
+      name: https
+      state: present
+
+  - name: start service
+    service:
+      name: https
+      state: started
+      enabled: true

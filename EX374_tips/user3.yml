@@ -1,0 +1,8 @@
+----
+rgroups:
+  account:
+    name: account
+    gid: 2001
+  developemnt:
+    name: dev
+    gid: 7002

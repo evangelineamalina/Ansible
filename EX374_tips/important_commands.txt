@@ -1,0 +1,25 @@
+# Imp Git commands
+> git config --global user.name 'first last'
+>git config --global user.email 'first@example.com'
+>git config --global push.default simple
+>git config --global -l
+
+# list the inventory hosts from dynamic inventory belonging to a group
+> ansible-navigator inventory -m stdout -i inventory/<dynamic_inventory.py> --graph <group_name>
+
+# list all the inventory hosts from dynamic inventory
+> ansible-navigator inventory -m stdout --graph all
+
+#Convert INI inventory to YAML 
+> ansible-navigator inventory -m stdout -i <origina_inventory> --list --yaml
+
+# Generate a ansible-navigator config file
+> ansible-navigator settings --effective --pp missing --eei <exec-env> > ansible-navigator.YAML
+
+# command to view the encrypted secret.yml file
+> ansible-vault view secret.yml --vault-password-file=secret-pass
+
+# To promt for vault password
+>ansible-navigator run create-user.yml --pae false --ask-vault-pass
+
+>ansible-navigator run create-user.yml --pae false --ask-become-pass

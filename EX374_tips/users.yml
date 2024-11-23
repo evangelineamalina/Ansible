@@ -1,0 +1,25 @@
+---
+users:
+  - username: gilil11
+    use_sudo:
+    use_uid: 2005
+    use_group: users
+    first: gili
+    middle: one
+    last: temp
+
+  - username: gilil222
+    use_sudo:
+    use_uid: 1010
+    use_group: users
+    first: gili
+    middle: two
+    last: temp
+
+  - username: gilil333
+    use_sudo:
+    use_uid: 1011
+    use_group: users
+    first: gili
+    middle: three
+    last: temp

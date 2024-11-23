@@ -1,0 +1,16 @@
+- name:  Master Playbook
+  hosts: cifapp:!dbserver
+  become: yes
+  vars:
+    default_limit_nofile: "65535"
+ 
+  tasks:
+  - name: update  DefaultLimitNOFILE={{ default_limit_nofile }} value
+    lineinfile:
+      path: /etc/systemd/system.conf
+      regex: '^(.*DefaultLimitNOFILE=)'
+      line: DefaultLimitNOFILE={{ default_limit_nofile }}
+      owner: 'root'
+      group: 'root'
+      mode: 0644
+  

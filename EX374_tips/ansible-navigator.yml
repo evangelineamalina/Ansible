@@ -1,0 +1,15 @@
+---
+ansible-navigator:
+  mode: stdout
+  playbook-artifact:
+    enable: false
+  ansible: 
+    config: ./ansible.cfg
+
+  execution-environment:
+     image: <image_name>
+     pull:
+      policy: missing
+     environment-varibles:
+       set:
+         ANSIBLE_PIPELINING: true  ##Establish few ssh connections

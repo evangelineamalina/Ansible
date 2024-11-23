@@ -1,0 +1,11 @@
+- name: sample
+  hosts:
+  vars_files:
+    - user2.yml
+  tasks:
+  #- include_vars: user2.yml
+  - name: sample create user
+    user:
+      name: "{{ item['key']}}"
+      comment:" {{ item['value']['name']}}"
+    loop: "{{ users | dict2items }}"

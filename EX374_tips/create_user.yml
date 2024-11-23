@@ -1,0 +1,26 @@
+---
+- name: create users from variables file
+  hosts: emngmtapd1s03
+  become: true
+
+    
+  tasks:
+  - name: load variables
+    include_vars: users.yml
+
+  - name: List the user details
+    debug: 
+      msg: "thisis name: {{ item.username}} \n This is middle: {{ item.middle }}"
+    with_items:
+      - "{{ users }}"
+  
+  - name: create the users
+    user:
+      name: "{{ item.username }}"
+      #password: "{{ lookup('password', 'credentials/' + item.username + '/password.txt encrypt=md5_crypt' )}}"
+      password: "{{ item.username | password_hash('sha512')}}"
+      comment: "{{ item.first +' ' +item.middle +' '+item.last }}"
+    with_items:
+      - "{{ users }}"
+  
+  
