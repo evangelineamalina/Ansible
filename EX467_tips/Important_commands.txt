@@ -1,0 +1,13 @@
+> subscription-manager register
+> subscription-manager repos --enable ansible-automation-platform-2.2-for-rhel-8-x86_64-rpms
+
+> tar xzf aap2.2.bundle
+#edit the inventory file with required fqdn , certs and keys
+#run as root
+> sudo -i
+> ./setup.sh -e ignore_preflight_errors=true
+
+#to verify postgres installation
+> ssh student@lab.example.com
+> sudo su - postgres
+> psql -U postgres -l
