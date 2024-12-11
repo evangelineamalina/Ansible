@@ -1,0 +1,22 @@
+---
+- name: Launch a job in controller
+  host: loclahost
+  gather_facts: false
+
+  vars:
+   controller_user: admin
+   controller_password: redhat
+   controller_host: automation.example.com
+   controller_job: Demo%20job  #{{ 'Demo job' | urlencode}}
+
+  tasks:
+  - name: launch the job
+    uri: 
+      url: "https://{{ controller_host }}/api/v2/job_templates/{{ controller_job }}/launch"
+      methos: POST
+      valdate_certs: no
+      return_code: yes
+      user: "{{ controller_user}}"
+      password: "{{ controller_password }}"
+      force_basic_auth: yes
+      status_code: 201

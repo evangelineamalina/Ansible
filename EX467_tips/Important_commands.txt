@@ -11,3 +11,47 @@
 > ssh student@lab.example.com
 > sudo su - postgres
 > psql -U postgres -l
+
+# API calls
+> curl -X GET <controller_url>/api/ -k
+
+# In a JQ readable format
+>curl -X GET <controller_url>/api/v2 -k -s | jq .
+
+# to get the activity stream
+>curl -X GET --user admin:password <controller_utl>/api/v2/activity_stream -k -s | jq .
+
+#Encrypt the fiel with password
+> ansible-vault encrypt launch_job_with_api.yml
+#and the create a vault credential in the controller to decrypt the password
+
+#to get details of job and number
+> curl -X GET --user asdmin:xxxx https://<controller>/api/v2/job_templates/?name="job name" -k -s | jq
+
+#to get the launch details of the job
+> curl -X GET --user asdmin:xxxx https://<controller>/api/v2/job_templates/<id>/launch/ -k -s | jq
+
+#to launch the job
+> curl -X POST --user asdmin:xxxx https://<controller>/api/v2/job_templates/<id>/launch/ -k -s | jq
+
+# /usr/bin/automation-controller-service
+>automation-controller-service stop|start|restart|status    
+
+>supervisorctl status
+
+>awx-manage changepassword admin
+>awx-manage createsuperuser
+
+#backup aap / run as root user in installation directory
+> cd /opt/ansible-automation-platform/installer
+>./setup.sh -b
+# to restore the backup
+>./setup.sh -r 
+
+# Generate topology dot file
+>./setup.sh -- --tag generate_dot_file
+>sudo dnf install graphviz
+>dot -Tjpg mesh-topology.dot -o graph-topology.jpg
+
+
+>awx-manage list_instances
